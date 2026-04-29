@@ -4,83 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Three.js 回転する立方体</title>
-    <style>
-      :root {
-        color-scheme: dark;
-      }
-
-      body {
-        margin: 0;
-        overflow: hidden;
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-        background: #0b1020;
-      }
-
-      .hint {
-        position: fixed;
-        top: 12px;
-        left: 12px;
-        margin: 0;
-        padding: 8px 10px;
-        border-radius: 8px;
-        background: rgba(0, 0, 0, 0.45);
-        color: #e5e7eb;
-        font-size: 14px;
-      }
-    </style>
   </head>
   <body>
     <p class="hint">Three.js サンプル: 回転する立方体</p>
-
-    <script type="module">
-      import * as THREE from "https://unpkg.com/three@0.166.1/build/three.module.js";
-
-      const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x0b1020);
-
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000,
-      );
-      camera.position.z = 3;
-
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      document.body.appendChild(renderer.domElement);
-
-      const geometry = new THREE.BoxGeometry(1, 1, 1);
-      const material = new THREE.MeshStandardMaterial({
-        color: 0x60a5fa,
-        metalness: 0.2,
-        roughness: 0.4,
-      });
-      const cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
-
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-      directionalLight.position.set(2, 2, 3);
-      scene.add(directionalLight);
-
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
-      scene.add(ambientLight);
-
-      function animate() {
-        requestAnimationFrame(animate);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.015;
-        renderer.render(scene, camera);
-      }
-
-      animate();
-
-      window.addEventListener("resize", () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    </script>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
